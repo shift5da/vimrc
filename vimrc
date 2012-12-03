@@ -15,6 +15,7 @@ if has('syntax')
 		set background=dark
 	endif
 
+	let g:molokai_original = 1
 	colorscheme molokai
 
 endif
@@ -73,7 +74,6 @@ inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap { {}<Esc>i
 inoremap " ""<Esc>i
-inoremap ' ''<Esc>i
 
 "查找忽略大小写
 set ic  
@@ -96,7 +96,6 @@ map <C-l> <C-W>l
 map <leader>w :bn<CR>
 map <leader>q :bp<CR>
 
-
 " " Opens a new tab with the current buffer's path
 " " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
@@ -105,15 +104,7 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 set autoread
 
 "NERDTree
-let NERDTreeShowBookmarks=1
-let NERDTreeChDirMode=2
-let NERDTreeWinPos='left'
-let NERDTreeWinSize=31
-let NERDTreeHighlightCursorline=1
 
-
-autocmd VimEnter * NERDTree
-autocmd BufEnter * NERDTreeMirror
 
 "CtrlP
 let g:ctrlp_map = '<c-p>'
