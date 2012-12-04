@@ -1,4 +1,4 @@
-set guifont=Monaco\ Regular:h14
+set guifont=Monaco:h14
 
 "关闭声音
 set noeb
@@ -8,18 +8,9 @@ set vb t_vb=
 "显示光标所在位置
 set ruler
 
-if has('syntax')
-	if has('gui_running')
-		let g:molokai_original = 1
-		set background=light
-	else
-	
-		set background=dark
-	endif
-	colorscheme molokai
-
-endif
-
+let g:molokai_original = 1
+set background=light
+colorscheme molokai
 set t_Co=256
 
 "隐藏底部滚动条
