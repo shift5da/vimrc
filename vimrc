@@ -19,20 +19,23 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomasr/molokai'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-Bundle 'honza/snipmate-snippets'
-" Bundle 'tpope/vim-endwise'
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "honza/snipmate-snippets"
+Bundle "garbas/vim-snipmate"
+Bundle 'tpope/vim-endwise'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tmhedberg/matchit'
 Bundle 'Townk/vim-autoclose'
+Bundle 'pangloss/vim-javascript'
 
 filetype plugin indent on     " required!
 
 
-set wildmenu                    " show list instead of just completing
-set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
-set autochdir
+
+set scrolljump=5                " lines to scroll when cursor leaves screen
+set scrolloff=3                 " minimum lines to keep above and below cursor
+set foldenable                  " auto fold code
 
 "关闭声音
 set noeb
@@ -92,6 +95,9 @@ set hls is
 "高亮语法
 syntax on
 
+" 代码折叠
+set foldmethod=indent
+
 
 "查找忽略大小写
 set ic  
@@ -135,22 +141,6 @@ let g:ctrlp_working_path_mode = 'rc'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 
-"使用'\'+数字键切换tab
-function! TabPos_ActivateBuffer(num)  
-	let s:count = a:num   
-	exe "tabfirst"  
-	exe "tabnext" s:count    
-endfunction  
-
-function! TabPos_Initialize()  
-	for i in range(1, 9)   
-		exe "map <leader>" . i . " :call TabPos_ActivateBuffer(" . i . ")<CR>"  
-	endfor  
-	exe "map <leader>0 :call TabPos_ActivateBuffer(10)<CR>"  
-endfunction  
-
-autocmd VimEnter * call TabPos_Initialize()  
-
 
 "开启ruby代码自动补全的功能
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
@@ -172,46 +162,13 @@ if has('statusline')
 endif
 
 
-" " NeoComplCache
-" let g:neocomplcache_enable_at_startup=1
-" let g:neoComplcache_disableautocomplete=1
-" let g:neocomplcache_enable_underbar_completion = 1
-" let g:neocomplcache_enable_camel_case_completion = 1
-" let g:neocomplcache_enable_smart_case=1
-" let g:neocomplcache_min_syntax_length = 3
-" let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-" set completeopt-=preview
-
-" imap <C-k> <Plug>(neocomplcache_snippets_force_expand)
-" smap <C-k> <Plug>(neocomplcache_snippets_force_expand)
-" imap <C-l> <Plug>(neocomplcache_snippets_force_jump)
-" smap <C-l> <Plug>(neocomplcache_snippets_force_jump)
-" " Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType c setlocal omnifunc=ccomplete#Complete
-
-
-" " For snippet_complete marker.
-" if has('conceal')
-	" set conceallevel=2 concealcursor=i
-" endif
-
-" Tell Neosnippet about the other snippets
-" let g:neosnippet#snippets_directory='~/.vim/bundle/snipmate-snippets/snippets'
-
-
-source ~/.NeoComplCache.conf
-
-
 if has('gui_running')
-	set lines=50
+	set lines=60
 	let g:molokai_original = 1
 	set background=light
-	set guifont=Monaco:h13
+	set guifont=Monaco:h12
 	set guioptions=aAce
+	set linespace=1
 	map <D-1> 1gt
 	map <D-2> 2gt
 	map <D-3> 3gt
@@ -228,3 +185,4 @@ else
 endif
 
 colorscheme molokai
+
