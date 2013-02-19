@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 "
 " original repos on github
 Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/nerdtree'
@@ -28,14 +29,13 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tmhedberg/matchit'
 Bundle 'Townk/vim-autoclose'
 Bundle 'pangloss/vim-javascript'
+Bundle 'ervandew/supertab'
 
 filetype plugin indent on     " required!
 
 
-
 set scrolljump=5                " lines to scroll when cursor leaves screen
 set scrolloff=3                 " minimum lines to keep above and below cursor
-set foldenable                  " auto fold code
 
 "关闭声音
 set noeb
@@ -47,15 +47,6 @@ set ruler
 
 
 set t_Co=256
-
-"隐藏底部滚动条
-set guioptions-=b
-"隐藏右边滚动条
-set guioptions-=R
-set guioptions-=r
-"隐藏左边滚动条
-set guioptions-=l
-set guioptions-=L
 
 " 定义 <Leader> 为逗号
 let mapleader = ","
@@ -97,14 +88,17 @@ syntax on
 
 " 代码折叠
 set foldmethod=indent
+set foldlevel=100  " 启动vim时不要自动折叠代码
 
+set et   "编辑时将所有 Tab 替换为空格
+set smarttab    
 
 "查找忽略大小写
 set ic  
 
-set tabstop=2
-set smartindent shiftwidth=2
-set autoindent shiftwidth=2
+set tabstop=4
+set smartindent shiftwidth=4
+set autoindent shiftwidth=4
 
 ""filetype on
 filetype plugin indent on
@@ -129,10 +123,10 @@ let NERDTreeShowBookmarks=1
 let NERDTreeIgnore=['.DS_Store', '\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeChDirMode=2
 " let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
+let NERDTreeMouseMode=1
 let NERDTreeShowHidden=1
-" let NERDTreeKeepTreeInNewTab=1
-" let g:nerdtree_tabs_open_on_gui_startup=0
+
+
 
 "CtrlP
 let g:ctrlp_map = '<c-p>'
@@ -155,6 +149,8 @@ let NERDSpaceDelims=1    "让注释与语句之间留一个空格
 let NERDCompactSexyComs=1   "多行注释美化
 
 
+let g:SuperTabDefaultCompletionType = "context"
+
 " powerline
 if has('statusline')
 	set laststatus=2
@@ -164,11 +160,11 @@ endif
 
 if has('gui_running')
 	set lines=60
-	let g:molokai_original = 1
 	set background=light
 	set guifont=Monaco:h12
 	set guioptions=aAce
-	set linespace=1
+  set transparency=1
+  set linespace=1
 	map <D-1> 1gt
 	map <D-2> 2gt
 	map <D-3> 3gt
@@ -184,5 +180,14 @@ else
 	set background=dark
 endif
 
+let g:molokai_original = 1
 colorscheme molokai
+" colorscheme zenburn
+
+nmap <leader>ww :wq<cr>
+nmap <leader>qq :q!<cr>
+vmap <leader>aa "ay
+nmap <leader>ss "ap
+nmap <leader>nn :bn<cr>
+nmap <leader>pp :bp<cr>
 
