@@ -18,24 +18,28 @@ Bundle 'tpope/vim-surround'
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'tomasr/molokai'
 Bundle 'Lokaltog/vim-powerline'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/snipmate-snippets"
-Bundle "garbas/vim-snipmate"
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/snipmate-snippets'
+Bundle 'garbas/vim-snipmate'
 Bundle 'tpope/vim-endwise'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'tmhedberg/matchit'
 Bundle 'Townk/vim-autoclose'
 Bundle 'pangloss/vim-javascript'
 Bundle 'ervandew/supertab'
+Bundle 'flazz/vim-colorschemes'
+Bundle 'Yggdroot/indentLine'
 
 filetype plugin indent on     " required!
 
 
 set scrolljump=5                " lines to scroll when cursor leaves screen
 set scrolloff=3                 " minimum lines to keep above and below cursor
+
+"设定代码折叠的方式，根据缩进进行折叠
+set foldmethod=indent
 
 "关闭声音
 set noeb
@@ -44,7 +48,6 @@ set vb t_vb=
 
 "显示光标所在位置
 set ruler
-
 
 set t_Co=256
 
@@ -60,7 +63,7 @@ set noswapfile
 
 "高亮当前行
 set cursorline
-set cursorcolumn
+" set cursorcolumn
 
 "历史记录数
 set history=50
@@ -96,9 +99,9 @@ set smarttab
 "查找忽略大小写
 set ic  
 
-set tabstop=4
-set smartindent shiftwidth=4
-set autoindent shiftwidth=4
+set tabstop=2
+set smartindent shiftwidth=2
+set autoindent shiftwidth=2
 
 ""filetype on
 filetype plugin indent on
@@ -126,6 +129,8 @@ let NERDTreeChDirMode=2
 let NERDTreeMouseMode=1
 let NERDTreeShowHidden=1
 
+" vim-nerdtree-tabs
+let g:nerdtree_tabs_autoclose=0   "当关闭最后一个tab时不关闭左侧的nerdtree
 
 
 "CtrlP
@@ -148,41 +153,42 @@ autocmd BufNewFile,BufRead *.html.erb set filetype=html.eruby
 let NERDSpaceDelims=1    "让注释与语句之间留一个空格
 let NERDCompactSexyComs=1   "多行注释美化
 
-
 let g:SuperTabDefaultCompletionType = "context"
 
 " powerline
 if has('statusline')
-	set laststatus=2
-	set encoding=utf-8
+  set laststatus=2
+  set encoding=utf-8
 endif
 
 
 if has('gui_running')
-	set lines=60
-	set background=light
-	set guifont=Monaco:h12
-	set guioptions=aAce
+  set lines=60
+  set guifont=Monaco:h12
+  set guioptions=aAce
   set transparency=1
   set linespace=1
-	map <D-1> 1gt
-	map <D-2> 2gt
-	map <D-3> 3gt
-	map <D-4> 4gt
-	map <D-5> 5gt
-	map <D-6> 6gt
-	map <D-7> 7gt
-	map <D-8> 8gt
-	map <D-9> 9gt
-	map <D-0> :tablast<CR>
+  map <D-1> 1gt
+  map <D-2> 2gt
+  map <D-3> 3gt
+  map <D-4> 4gt
+  map <D-5> 5gt
+  map <D-6> 6gt
+  map <D-7> 7gt
+  map <D-8> 8gt
+  map <D-9> 9gt
+  map <D-0> :tablast<CR>
 else
-	set guifont=Monaco\ Regular:h13
-	set background=dark
+  set guifont=Monaco\ Regular:h12
 endif
 
-let g:molokai_original = 1
-colorscheme molokai
-" colorscheme zenburn
+" let g:molokai_original = 1
+" colorscheme molokai
+" colorscheme desert
+colorscheme desertEx
+" colorscheme kib_darktango
+" colorscheme anotherdark
+" colorscheme bensday
 
 nmap <leader>ww :wq<cr>
 nmap <leader>qq :q!<cr>
