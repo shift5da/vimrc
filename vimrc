@@ -128,10 +128,10 @@ syntax enable
 if has('gui_running')
   set lines=60
   " set guifont=Monaco:h12
-  set guifont=Courier:h14
+  set guifont=Inconsolata:h14
   set guioptions=aAce
   set transparency=1
-  set linespace=2
+  set linespace=1
   map <D-1> 1gt
   map <D-2> 2gt
   map <D-3> 3gt
