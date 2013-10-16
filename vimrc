@@ -33,6 +33,7 @@ Bundle 'vim-scripts/actionscript.vim--Cuss'
 Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'matze/vim-move'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -260,4 +261,5 @@ let NERDCompactSexyComs=1   "多行注释美化
 
 let g:SuperTabDefaultCompletionType = "context"
 
-
+"vim-move
+let g:move_key_modifier = 'D'
