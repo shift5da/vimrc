@@ -148,7 +148,6 @@ if has('gui_running')
   map <D-9> 9gt
   map <D-0> :tablast<CR>
 else
-  " set guifont=Monaco\ Regular:h12
   set guifont=Courier\ Regular:h13
 endif
 
@@ -259,6 +258,7 @@ let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 let NERDSpaceDelims=1    "让注释与语句之间留一个空格
 let NERDCompactSexyComs=1   "多行注释美化
 
+"super tab
 let g:SuperTabDefaultCompletionType = "context"
 
 "vim-move
