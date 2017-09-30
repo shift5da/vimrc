@@ -1,39 +1,42 @@
 " vundle
+set nocompatible
 filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " My Bundles here:
 "
 " original repos on github
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-" Bundle 'tomtom/tcomment_vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'bling/vim-airline'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'tpope/vim-endwise'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'tmhedberg/matchit'
-Bundle 'Townk/vim-autoclose'
-Bundle 'pangloss/vim-javascript'
-Bundle 'ervandew/supertab'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'vim-scripts/actionscript.vim--Cuss'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'matze/vim-move'
+
+Plugin 'kien/ctrlp.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-endwise'
+Plugin 'tmhedberg/matchit'
+Plugin 'Townk/vim-autoclose'
+Plugin 'ervandew/supertab'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-scripts/actionscript.vim--Cuss'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-rails'
+Plugin 'KurtPreston/vim-autoformat-rails'
+Plugin 'pangloss/vim-javascript'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+
+call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -55,6 +58,12 @@ let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
+nmap <leader>q :q<cr>
+
+
+" Use the arrows to something usefull  
+" map <right> :bn<cr>  
+" map <left> :bp<cr>  
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -119,10 +128,10 @@ set foldlevel=100  " 启动vim时不要自动折叠代码
 set number 
 
 "高亮当前行
-set cursorline
+" set cursorline  "会使macvim变慢
 
 "高亮当前列
-set cursorcolumn
+" set cursorcolumn "会使macvim变慢
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
@@ -133,7 +142,7 @@ syntax enable
 if has('gui_running')
   set lines=60
   " set guifont=Monaco:h12
-  set guifont=Inconsolata:h14
+  set guifont=Inconsolata:h16
   set guioptions=aAce
   set transparency=1
   set linespace=1
@@ -148,16 +157,15 @@ if has('gui_running')
   map <D-9> 9gt
   map <D-0> :tablast<CR>
 else
-  set guifont=Courier\ Regular:h13
+  set guifont=Courier\ Regular:h15
+  nnoremap th  :tabfirst<CR>
+  nnoremap tj  :tabnext<CR>
+  nnoremap tk  :tabprev<CR>
+  nnoremap tl  :tablast<CR>
 endif
 
-let g:molokai_original = 1
-colorscheme molokai
-" colorscheme desert
-" colorscheme desertEx
-" colorscheme kib_darktango
-" colorscheme anotherdark
-" colorscheme bensday
+set background=dark
+colorscheme gruvbox 
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -240,7 +248,7 @@ let NERDTreeShowHidden=1
 "CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_working_path_mode = 'rw'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 let g:ctrlp_custom_ignore = '\v[\/](\.git|\.hg|\.svn)$'
 
@@ -263,3 +271,7 @@ let g:SuperTabDefaultCompletionType = "context"
 
 "vim-move
 let g:move_key_modifier = 'D'
+
+"air-line
+" let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='gruvbox'
